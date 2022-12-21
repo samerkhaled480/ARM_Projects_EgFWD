@@ -4,10 +4,8 @@
 #include "MCU_HW.h"
 
  
-void Port_Init( const PORT_ConfigType * ConfigPtr)
+void Port_Init( void)
 {
-	if(ConfigPtr != 0)
-	{
 		uint8 i = 0;
 		volatile uint8 dummy = 1;
 		
@@ -17,8 +15,8 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 		for(i=0 ; i < NUMBER_OF_ACTIVATED_PINS ; i++)
 		{
 			
-			PortNum = ConfigPtr[i].PortNum;
-		  PinNum 	= ConfigPtr[i].PinNum;
+			PortNum = User_Pins_cfg[i].PortNum;
+		  PinNum 	= User_Pins_cfg[i].PinNum;
 			
 			//step1 : init clock
 			switch(PortNum)
@@ -64,7 +62,7 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 			
 			
 			//step3 : set direction 
-			switch(ConfigPtr[i].PinDir)
+			switch(User_Pins_cfg[i].PinDir)
 			{
 				case PORT_INPUT:
 				{
@@ -78,7 +76,7 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 			
 			
 			//step4 : set mode
-			switch(ConfigPtr[i].PinMode)
+			switch(User_Pins_cfg[i].PinMode)
 			{
 				case PORT_DIO:
 				{
@@ -91,7 +89,7 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 			
 			
 			//step5 : set output current
-			switch(ConfigPtr[i].OutputCurrent)
+			switch(User_Pins_cfg[i].OutputCurrent)
 			{
 				case PORT_PIN_CURR_2MA:
 				{
@@ -111,7 +109,7 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 			
 			
 			//step6 : set level
-			switch(ConfigPtr[i].PinLevel)
+			switch(User_Pins_cfg[i].PinLevel)
 			{
 				case PORT_HIGH:
 				{
@@ -126,8 +124,6 @@ void Port_Init( const PORT_ConfigType * ConfigPtr)
 			
 		
 		}//end of for loop
-		
-	}//end of if condition 
 	
 }//end of function 
 

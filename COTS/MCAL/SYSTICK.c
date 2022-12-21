@@ -71,7 +71,7 @@ void SYSTICK_Disable(void)
 void SYSTICK_PeriodSet(uint32 Period)
 {
 	// To Do : implment mechanism for different clock cycles not only 16Mhz
-	SYSTICK_RELOAD = (( Period * 16000)-1);
+	SYSTICK_RELOAD |= ((( Period * 16000)-1) & 0xFFFFFF) ;
 }
 
 /************************************************************************************
@@ -84,7 +84,11 @@ void SYSTICK_PeriodSet(uint32 Period)
 ************************************************************************************/
 boolean SYSTICK_Is_Time_out(void)
 {
-	if( READ_BIT(SYSTICK_CTRL,SYSTICK_COUNT_FLAG_POS) || SYSTICK_CURRENT == 0) return True;
+	if( READ_BIT(SYSTICK_CTRL,SYSTICK_COUNT_FLAG_POS) || SYSTICK_CURRENT == 0) 
+	{
+		CLR_BIT(SYSTICK_CTRL,SYSTICK_COUNT_FLAG_POS);
+		return True;
+	}
 	else return False; 
 }
 

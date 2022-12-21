@@ -3,108 +3,43 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  PORT.h
- *       Module:  PORT
+ *         File:  LED.h
+ *       Module:  LED
  *
- *  Description:  header file for DIO Module    
+ *  Description:  header file for Application 
  *  
  *********************************************************************************************************************/
-#ifndef __Port_H__
-#define __Port_H__
+#ifndef __LED_H__
+#define __LED_H__
 
 /**********************************************************************************************************************
-- * INCLUDES
+- *																	 INCLUDES
 - *********************************************************************************************************************/
-#include "Std_Types.h"
-#include "MCU_HW.h"
-#include "PORT_Lcfg.h"
 
 /*******************************************************************************
  *                               Types Declaration                             *
  *******************************************************************************/
-	typedef enum
-	{
-		PORT_DIO = 0
-		/*to do*/
-	}PORT_PinMode_Type;
 
 
-	typedef enum
-	{
-		PORT_INPUT = 0,
-		PORT_OUTPUT
-		
-	}PORT_PinDirection_Type;
+#define LED_PORT PORTF
+
+#define LED_1_PIN PIN1
+#define LED_2_PIN PIN2
+#define LED_3_PIN PIN3
 
 
-	typedef enum
-	{
-		PORT_LOW = 0,
-		PORT_HIGH
-		
-	}PORT_PinLevel_Type;
-
-	typedef enum
-	{
-		PORT_PULLUP = 0,
-		PORT_PULLDOWN,
-		PORT_OPEN_DRAIN
-		
-	}PORT_PinINternalAttach_Type;
-
-	typedef enum
-	{
-		PORT_PIN_CURR_2MA = 0,
-		PORT_PIN_CURR_4MA,
-		PORT_PIN_CURR_8MA
-		
-	}PORT_PinOutputCurrent_Type;
-
-	typedef enum
-	{
-		PORT_PORTA = GPIO_PORTA ,
-		PORT_PORTB = GPIO_PORTB ,
-		PORT_PORTC = GPIO_PORTC ,
-		PORT_PORTD = GPIO_PORTD ,
-		PORT_PORTE = GPIO_PORTE ,
-		PORT_PORTF = GPIO_PORTF
-		
-	}PORT_PortNum_type;
-
-	typedef enum
-	{
-		PORT_PIN0 = 0,
-		PORT_PIN1,
-		PORT_PIN2,
-		PORT_PIN3,
-		PORT_PIN4,
-		PORT_PIN5,
-		PORT_PIN6,
-		PORT_PIN7,
-		
-	}PORT_PinNum_Type;
-	
-	typedef struct
-	{
-		PORT_PortNum_type						PortNum;
-		PORT_PinNum_Type						PinNum;
-		PORT_PinDirection_Type 			PinDir;
-		PORT_PinMode_Type 					PinMode;
-		PORT_PinINternalAttach_Type InternallAttach;
-		PORT_PinOutputCurrent_Type 	OutputCurrent;
-		PORT_PinLevel_Type					PinLevel;
-		
-	}PORT_ConfigType;
-
+#define LED_ON_TIME  5
+#define LED_OFF_TIME 5
 /*******************************************************************************
  *                              Extern variabes 		                           *
  *******************************************************************************/
 
-extern const PORT_ConfigType User_Pins_cfg[];
+
 
 /*******************************************************************************
  *                              Functions Prototypes                           *
  *******************************************************************************/
+
 
 /******************************************************************************
 * \Syntax          :                                    
@@ -116,13 +51,12 @@ extern const PORT_ConfigType User_Pins_cfg[];
 * \Parameters (out): None                                                      
 * \Return value:   : None
 *******************************************************************************/
- 
-void Port_Init(void);
+//void Define_Duty(uint16 ON_Timr ,uint16 OFF_Time);
 
 	
 
-#endif  /* Port_H */
+#endif  /* LED_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: Port.h
+ *  END OF FILE: LED.h
  *********************************************************************************************************************/
