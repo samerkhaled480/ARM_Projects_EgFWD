@@ -1,5 +1,5 @@
 
 #ignore all files in directory 
-.gitignore
+*.gitignore
 .vscode/
 Projects_Template/
