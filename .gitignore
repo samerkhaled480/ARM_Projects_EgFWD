@@ -1,17 +1,5 @@
-# Libraries
-*.lvlibp
-*.llb
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-
-# Metadata
-*.aliases
-*.lvlps
-.cache/
+#ignore all files in directory 
+.gitignore
+.vscode/
+Projects_Template/
