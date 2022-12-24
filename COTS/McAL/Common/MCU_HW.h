@@ -66,6 +66,7 @@
 /**************************************
 *   RCC REGISTRE
 ***************************************/
+	#define SYSCTL_REGCGPIO_REG           (*((volatile uint32 *)0x400FE608))
 	#define SYSCTL_REGCGC2_REG           (*((volatile uint32 *)0x400FE108))
 
 /**************************************

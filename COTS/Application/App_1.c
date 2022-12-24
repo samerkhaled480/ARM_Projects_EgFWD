@@ -34,13 +34,13 @@ void Define_Duty(uint32 ON_Time ,uint32 OFF_Time)
 		
 		if( time_secondes == OFF_Time && LED_state_flag == 0)
 		{
-			DIO_WriteChannel(LED_PORT , LED_1_PIN , STD_HIGH);
+			DIO_WriteChannel(LED_PORT , LED_2_PIN , STD_HIGH);
 			LED_state_flag = 1;
 			time_secondes = 0;
 		}	
 		else if(time_secondes == ON_Time && LED_state_flag == 1)
 		{
-			DIO_WriteChannel(LED_PORT , LED_1_PIN , STD_LOW);
+			DIO_WriteChannel(LED_PORT , LED_2_PIN , STD_LOW);
 			LED_state_flag = 0;
 			time_secondes = 0;
 		}

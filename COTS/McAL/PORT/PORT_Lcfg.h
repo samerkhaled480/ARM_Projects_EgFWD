@@ -6,6 +6,6 @@
 		#define GPIO_APB //or GPIO_AHB
 	#endif
 
-	#define NUMBER_OF_ACTIVATED_PINS 1U
+	#define NUMBER_OF_ACTIVATED_PINS 3U
 	
 #endif

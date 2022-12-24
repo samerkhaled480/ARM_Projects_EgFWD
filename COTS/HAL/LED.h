@@ -28,8 +28,8 @@
 #define LED_3_PIN PIN3
 
 
-#define LED_ON_TIME  5
-#define LED_OFF_TIME 5
+#define LED_ON_TIME  1
+#define LED_OFF_TIME 1
 /*******************************************************************************
  *                              Extern variabes 		                           *
  *******************************************************************************/
