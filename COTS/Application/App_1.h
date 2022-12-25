@@ -41,8 +41,9 @@
 * \Parameters (out): None                                                      
 * \Return value:   : None
 *******************************************************************************/
-void my_systick_isr(void);
+void systick_isr(void);
 
+void GPIOF_isr(void);
 
 /******************************************************************************
 * \Syntax          :                                    

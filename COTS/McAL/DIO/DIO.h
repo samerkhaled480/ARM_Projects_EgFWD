@@ -65,8 +65,6 @@ typedef uint32 DIO_PortLevelType;
  *                      Function Prototypes                                    *
  *******************************************************************************/
 
-
-
 /* Function for DIO flip channel API */
 DIO_LevelType DIO_FlipChannel(DIO_PortType PortID,DIO_ChannelType ChannelId);
 
@@ -82,10 +80,25 @@ DIO_PortLevelType DIO_ReadPort(DIO_PortType PortId);
 /* Function for DIO write Channel API */
 void DIO_WritePort(DIO_PortType PortId, DIO_PortLevelType Level);
 
+	
+
+void GPIOA_Handler(void);
+void GPIOB_Handler(void);
+void GPIOC_Handler(void);
+void GPIOD_Handler(void);
+void GPIOE_Handler(void);
+void GPIOF_Handler(void);
 
 /*******************************************************************************
- *                       External Variables                                    *
+ *                       External Variables                                    
  *******************************************************************************/
+extern void (*GPIOA_Handler_Callback_ptr)(void);
+extern void (*GPIOB_Handler_Callback_ptr)(void);
+extern void (*GPIOC_Handler_Callback_ptr)(void);
+extern void (*GPIOD_Handler_Callback_ptr)(void);
+extern void (*GPIOE_Handler_Callback_ptr)(void);
+extern void (*GPIOF_Handler_Callback_ptr)(void);
+
 
 #endif
 

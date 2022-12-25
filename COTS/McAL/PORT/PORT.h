@@ -84,6 +84,31 @@
 		
 	}PORT_PinNum_Type;
 	
+	typedef enum
+	{
+		PORT_Disable,
+		PORT_Enable
+		
+	}PORT_Interrupt_Enable_Type;
+	
+	typedef enum
+	{
+		PORT_NULL_Trigger,
+		PORT_Edge_Trigger,
+		PORT_Level_Trigger
+		
+	}PORT_Interrupt_Trigger_Type;
+	
+	typedef enum
+	{
+		PORT_NULL_EVENT,
+		PORT_Falling_Edge_Or_Low_Level,
+		PORT_Rising_Edge_Or_High_Level,
+		PORT_Both_Edges,
+		
+	}PORT_Interrupt_Event_Type;
+	
+	
 	typedef struct
 	{
 		PORT_PortNum_type						PortNum;
@@ -93,6 +118,9 @@
 		PORT_PinINternalAttach_Type InternallAttach;
 		PORT_PinOutputCurrent_Type 	OutputCurrent;
 		PORT_PinLevel_Type					PinLevel;
+		PORT_Interrupt_Enable_Type	IntrruptEnable;
+	  PORT_Interrupt_Trigger_Type	Trigger;
+		PORT_Interrupt_Event_Type		IntEvent;
 		
 	}PORT_ConfigType;
 

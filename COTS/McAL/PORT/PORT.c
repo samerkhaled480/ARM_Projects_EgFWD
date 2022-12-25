@@ -55,9 +55,9 @@ void Port_Init( void)
 			if(  (PortNum == GPIO_PORTF && PinNum == PORT_PIN0)  ||  (PortNum == GPIO_PORTD && PinNum == PORT_PIN7) )
 			{
 				
-			GPIO_LOCK(PortNum) = GPIO_LOCK_REG_KEY;
-			GPIO_CR(PortNum) = 0xFF;
-			SET_BIT( GPIO_CR(PortNum) , PinNum );
+				GPIO_LOCK(PortNum) = GPIO_LOCK_REG_KEY;
+				GPIO_CR(PortNum) = 0xFF;
+				SET_BIT( GPIO_CR(PortNum) , PinNum );
 			}
 			
 			
@@ -87,42 +87,104 @@ void Port_Init( void)
 				}break;
 			}
 			
-			
-			//step5 : set output current
-			switch(User_Pins_cfg[i].OutputCurrent)
+			//only if the pin is set to input
+			if( User_Pins_cfg[i].PinDir == PORT_INPUT)
 			{
-				case PORT_PIN_CURR_2MA:
+				//step5 : set pin internal attach 
+				switch(User_Pins_cfg[i].InternallAttach)
 				{
-					SET_BIT( GPIO_DR2R(PortNum) , PinNum );
+					case PORT_PULLDOWN:
+					{
+						SET_BIT ( GPIO_PDR(PortNum) , PinNum);
+					}break;
+					case PORT_PULLUP:
+					{
+						SET_BIT ( GPIO_PUR(PortNum) , PinNum);
+					}break;
+					case PORT_OPEN_DRAIN:
+					{
+						SET_BIT ( GPIO_ODR(PortNum) , PinNum);
+					}break;
+				}//end of switch
 				
-				}break;
-				case PORT_PIN_CURR_4MA:
+				//step 6 : enable interrupt if required 
+				if(User_Pins_cfg[i].IntrruptEnable == PORT_Enable)
 				{
-					SET_BIT( GPIO_DR4R(PortNum) , PinNum );
-				}break;
-				case PORT_PIN_CURR_8MA:
-				{
-					SET_BIT( GPIO_DR8R(PortNum) , PinNum );
-				}break;
-			}
-			
-			
-			
-			//step6 : set level
-			switch(User_Pins_cfg[i].PinLevel)
-			{
-				case PORT_HIGH:
-				{
-					SET_BIT( GPIO_DATA(PortNum) , PinNum );
 					
-				}break;
-				case PORT_LOW:
-				{
-					CLR_BIT( GPIO_DATA(PortNum) , PinNum );
-				}break;
-			}
+					//step 6.1 set the interrupt sense 
+					if(User_Pins_cfg[i].Trigger == PORT_Level_Trigger)
+					{
+						SET_BIT ( GPIO_IS(PortNum) , PinNum);
+					}
+					else 
+					{
+						CLR_BIT ( GPIO_IS(PortNum) , PinNum);
+					}
+					
+					
+					//step 6.2 set the interrupt event 
+					if(User_Pins_cfg[i].IntEvent == PORT_Falling_Edge_Or_Low_Level)
+					{
+						CLR_BIT ( GPIO_IBE(PortNum) , PinNum);
+						SET_BIT ( GPIO_IEV(PortNum) , PinNum);
+					}
+					else if(User_Pins_cfg[i].IntEvent == PORT_Rising_Edge_Or_High_Level)
+					{
+						CLR_BIT ( GPIO_IBE(PortNum) , PinNum);
+						CLR_BIT ( GPIO_IEV(PortNum) , PinNum);
+					}
+					else if(User_Pins_cfg[i].IntEvent == PORT_Both_Edges)
+					{
+						SET_BIT ( GPIO_IBE(PortNum) , PinNum);
+					}
+					else{}
+						
+					//step 6.3 clear any previous interrupts
+					SET_BIT ( GPIO_ICR(PortNum) , PinNum);
+						
+					//step 6.4 unmask(enable GPIO interrupt gate) the interrupt
+					SET_BIT ( GPIO_IM(PortNum) , PinNum);
+					
+				}//end of if condition 
+			}//end of if condition 
 			
-		
+			// step 6 and 7 if only pin is set to output
+			if( User_Pins_cfg[i].PinDir == PORT_OUTPUT)
+			{
+				//step6 : set output current
+				switch(User_Pins_cfg[i].OutputCurrent)
+				{
+					case PORT_PIN_CURR_2MA:
+					{
+						SET_BIT( GPIO_DR2R(PortNum) , PinNum );
+					
+					}break;
+					case PORT_PIN_CURR_4MA:
+					{
+						SET_BIT( GPIO_DR4R(PortNum) , PinNum );
+					}break;
+					case PORT_PIN_CURR_8MA:
+					{
+						SET_BIT( GPIO_DR8R(PortNum) , PinNum );
+					}break;
+				}//end of switch
+			
+				//step7 : set intial level level
+				switch(User_Pins_cfg[i].PinLevel)
+				{
+					case PORT_HIGH:
+					{
+						SET_BIT( GPIO_DATA(PortNum) , PinNum );
+						
+					}break;
+					case PORT_LOW:
+					{
+						CLR_BIT( GPIO_DATA(PortNum) , PinNum );
+					}break;
+				}//end of switch
+				
+			}//end of if conidtion
+			
 		}//end of for loop
 	
 }//end of function 

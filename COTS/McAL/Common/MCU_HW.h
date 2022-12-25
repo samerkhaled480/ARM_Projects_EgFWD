@@ -44,6 +44,15 @@
 	
 	#define GPIO_DATA(GPIO_PORT)			*((volatile uint32 *)(GPIO_PORT+0x3FC))
 	#define GPIO_DIR(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x400))
+	
+	#define GPIO_IS(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x404))
+	#define GPIO_IBE(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x408))
+	#define GPIO_IEV(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x40C))
+	#define GPIO_IM(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x410))
+	#define GPIO_RIS(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x414))
+	#define GPIO_MIS(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x418))
+	#define GPIO_ICR(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x41C))
+
 	#define GPIO_AFSEL(GPIO_PORT)			*((volatile uint32 *)(GPIO_PORT+0x420))
 	#define GPIO_LOCK(GPIO_PORT)			*((volatile uint32 *)(GPIO_PORT+0x520))
 	#define GPIO_CR(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x524))
@@ -56,10 +65,6 @@
 	#define GPIO_DEN(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x51C))
 	#define GPIO_AMSEL(GPIO_PORT)			*((volatile uint32 *)(GPIO_PORT+0x528))
 	#define GPIO_ODR(GPIO_PORT)      	*((volatile uint32 *)(GPIO_PORT+0x50C))
-	#define GPIO_IS(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x404))
-	#define GPIO_IBE(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x408))
-	#define GPIO_IM(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x410))
-	#define GPIO_RIS(GPIO_PORT)				*((volatile uint32 *)(GPIO_PORT+0x414))
 	
 	
 	#define GPIO_LOCK_REG_KEY						0x4C4F434B

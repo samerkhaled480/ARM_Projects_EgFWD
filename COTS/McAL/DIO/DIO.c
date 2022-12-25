@@ -18,7 +18,19 @@
 #include "DIO.h"
 
 /**********************************************************************************************************************
- *                                 GLOBAL FUNCTION PROTOTYPES
+ *                                                  LOCAL DATA 
+ *********************************************************************************************************************/
+
+void (*GPIOA_Handler_Callback_ptr)(void);
+void (*GPIOB_Handler_Callback_ptr)(void);
+void (*GPIOC_Handler_Callback_ptr)(void);
+void (*GPIOD_Handler_Callback_ptr)(void);
+void (*GPIOE_Handler_Callback_ptr)(void);
+void (*GPIOF_Handler_Callback_ptr)(void);
+
+
+/**********************************************************************************************************************
+ *                                  FUNCTIONS 
  *********************************************************************************************************************/
 
 /************************************************************************************
@@ -144,20 +156,59 @@ void DIO_WritePort(DIO_PortType PortID,DIO_PortLevelType Level)
 }
 
 
-/*
-
-channeltype = pins 
-ch0,ch1,ch2,ch3,ch4,ch5,ch6,ch7
-
-porttype = port name 
-PORTA,B,C,D..
-
-LEVEL_TYPE = high or low
-
-PORT_LEVEL_TYPE = 0:255 per port as port is 8bit register 
+void GPIOA_Handler(void)
+{
+	if(GPIOA_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOA_Handler_Callback_ptr();
+	}
+}
 
 
-*/
+void GPIOB_Handler(void)
+{
+	if(GPIOB_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOB_Handler_Callback_ptr();
+	}
+}
+
+
+void GPIOC_Handler(void)
+{
+	if(GPIOC_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOC_Handler_Callback_ptr();
+	}
+}
+
+
+void GPIOD_Handler(void)
+{
+	if(GPIOD_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOD_Handler_Callback_ptr();
+	}
+}
+
+
+void GPIOE_Handler(void)
+{
+	if(GPIOE_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOE_Handler_Callback_ptr();
+	}
+}
+
+
+void GPIOF_Handler(void)
+{
+	if(GPIOF_Handler_Callback_ptr != NULL_PTR)
+	{
+		GPIOF_Handler_Callback_ptr();
+	}
+}
+
 /**********************************************************************************************************************
  *  END OF FILE: DIO.c
  *********************************************************************************************************************/

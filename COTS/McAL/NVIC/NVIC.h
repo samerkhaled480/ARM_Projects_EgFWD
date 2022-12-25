@@ -33,7 +33,8 @@ typedef enum{
     ADC0_SEQ0           ,
     ADC0_SEQ1           ,
     ADC0_SEQ2           ,
-    ADC0_SEQ3    
+    ADC0_SEQ3    				,
+		GPIO_PORT_F			= 46
  //TODO : restof vector table 
 
 }NVIC_InterruptNameType;

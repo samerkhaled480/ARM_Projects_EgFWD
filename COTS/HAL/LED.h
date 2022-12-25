@@ -27,9 +27,10 @@
 #define LED_2_PIN PIN2
 #define LED_3_PIN PIN3
 
+#define SW_PORT PORTF
 
-#define LED_ON_TIME  1
-#define LED_OFF_TIME 1
+#define SW1_PIN PIN0
+#define SW2_PIN PIN4
 /*******************************************************************************
  *                              Extern variabes 		                           *
  *******************************************************************************/

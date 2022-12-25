@@ -20,9 +20,9 @@
  *  GLOBAL CONSTANT MACROS
 *********************************************************************************************************************/
 
-    #define SET_BIT(Value,bit) 		(Value |=  (1 << bit))
-    #define CLR_BIT(Value,bit)  	(Value &= ~(1<<bit))
-    #define TOG_BIT(Value,bit)  	(Value ^=  (1<<bit))
+    #define SET_BIT(Value,bit) 		(Value |=  (1UL << bit))
+    #define CLR_BIT(Value,bit)  	(Value &= ~(1UL <<bit))
+    #define TOG_BIT(Value,bit)  	(Value ^=  (1UL <<bit))
     #define READ_BIT(Value,bit)		((Value>>bit)& 1)
 		
     /* NULL_PTR define with a void pointer to zero definition*/
@@ -68,4 +68,5 @@
 #endif /* STD_TYPES_H */
 
  
- 
+
+
