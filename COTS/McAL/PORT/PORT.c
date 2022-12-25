@@ -1,9 +1,32 @@
 
+/**********************************************************************************************************************
+
+ *  FILE DESCRIPTION
+ *
+ -------------------------------------------------------------------------------------------------------------------
+ *         File: PORT.h
+ *       Module: PORT
+ *
+ *  Description:  Header file Contains all Configuration of PORT Driver
+ *
+ *********************************************************************************/
+
+
+/**********************************************************************************************************************
+ *                                         INCLUDES
+ *********************************************************************************************************************/
 
 #include "PORT.h"
 #include "MCU_HW.h"
 
- 
+/************************************************************************************
+* Description       : Function to intialize GPIOs with all its features
+											base on configuration files 
+* Parameters (in)   : none
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : none
+************************************************************************************/
 void Port_Init( void)
 {
 		uint8 i = 0;
@@ -51,7 +74,7 @@ void Port_Init( void)
 			dummy = dummy + 4;
 
 			
-			//step3 : unlock GPIO commit register and enable write ops on GPIO registers if required 
+			//step 2 : unlock GPIO commit register and enable write ops on GPIO registers if required 
 			if(  (PortNum == GPIO_PORTF && PinNum == PORT_PIN0)  ||  (PortNum == GPIO_PORTD && PinNum == PORT_PIN7) )
 			{
 				
@@ -90,7 +113,7 @@ void Port_Init( void)
 			//only if the pin is set to input
 			if( User_Pins_cfg[i].PinDir == PORT_INPUT)
 			{
-				//step5 : set pin internal attach 
+				//step 5 : set pin internal attach 
 				switch(User_Pins_cfg[i].InternallAttach)
 				{
 					case PORT_PULLDOWN:

@@ -57,37 +57,73 @@ typedef uint32 DIO_PortLevelType;
 
 
 /*******************************************************************************
- *                              CONFIGURATION STRUCTURE                        *
- *******************************************************************************/
+*                      Function Prototypes                                    *
+*******************************************************************************/
 
 
-/*******************************************************************************
- *                      Function Prototypes                                    *
- *******************************************************************************/
-
-/* Function for DIO flip channel API */
+/************************************************************************************
+* Description       : Function to flip the level of a channel and return the level of the channel after flip.
+* Parameters (in)   : Port_d , CH_Id
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : DIO_LevelType
+************************************************************************************/
 DIO_LevelType DIO_FlipChannel(DIO_PortType PortID,DIO_ChannelType ChannelId);
 
-/* Function for DIO write Port API */
+/************************************************************************************
+* Service Name: DIO_WriteChannel
+* Parameters (in): 	PortId , ChannelId , Level 
+* Parameters (inout): None
+* Parameters (out): None
+* Return value: None
+* Description: Function to set a level of a channel.
+************************************************************************************/
 void DIO_WriteChannel(DIO_PortType PortID,DIO_ChannelType ChannelId, DIO_LevelType Level);
 
-/* Function for DIO read Port API */
+/************************************************************************************
+* Description       : Function to return the value of the specified DIO channel.
+* Parameters (in)   : Port-Id , CH_Id 
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : DIO_LevelType or 0xff incase of wrong port id 
+************************************************************************************/
 DIO_LevelType DIO_ReadChannel(DIO_PortType PortID,DIO_ChannelType ChannelId);
 
-/* Function for DIO read Channel API */
+/************************************************************************************
+* Description       : Function to return the value of the specified DIO Port.
+* Parameters (in)   : PortID - ID of DIO Port.
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : DIO_PortLevelType of 0xff incase of wrong PORTID value
+************************************************************************************/
 DIO_PortLevelType DIO_ReadPort(DIO_PortType PortId);
 
-/* Function for DIO write Channel API */
+
+/************************************************************************************
+* Description       : Function to set a level of a Port
+* Parameters (in)   : PortID - ID of DIO Port.
+* Parameters (in)   : Level - Value to be written.
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : None
+************************************************************************************/
 void DIO_WritePort(DIO_PortType PortId, DIO_PortLevelType Level);
 
-	
-
+/************************************************************************************
+* Description       : Function prototype for each GPIO port ISR handlers
+* Parameters (in)   : none
+* Parameters (in)   : none
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : None
+************************************************************************************/
 void GPIOA_Handler(void);
 void GPIOB_Handler(void);
 void GPIOC_Handler(void);
 void GPIOD_Handler(void);
 void GPIOE_Handler(void);
 void GPIOF_Handler(void);
+
 
 /*******************************************************************************
  *                       External Variables                                    

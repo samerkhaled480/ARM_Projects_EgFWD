@@ -2,11 +2,9 @@
 #include "MCU_HW.h"
 #include "NVIC.h"
 
-
-#define APINT_KEY 		0x05FAUL
-#define APINT_KEY_POS	16UL
-#define APINT_PRI_GROUP_BITS_POS 8UL
-
+#define APINT_KEY 								0x05FA
+#define APINT_KEY_POS							16UL
+#define APINT_PRI_GROUP_BITS_POS 	8UL
 
 /******************************************************************************
 * \Syntax          : void IntCrtl_Init(void)                                      

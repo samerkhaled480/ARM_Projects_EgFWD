@@ -134,17 +134,15 @@ extern const PORT_ConfigType User_Pins_cfg[];
  *                              Functions Prototypes                           *
  *******************************************************************************/
 
-/******************************************************************************
-* \Syntax          :                                    
-* \Description     : 
-*                                                                             
-* \Sync\Async      : Synchronous                                               
-* \Reentrancy      : Non Reentrant                                             
-* \Parameters (in) : None                     
-* \Parameters (out): None                                                      
-* \Return value:   : None
-*******************************************************************************/
- 
+
+/************************************************************************************
+* Description       : Function to intialize GPIOs with all its features
+											base on configuration files 
+* Parameters (in)   : none
+* Parameters (inout): None
+* Parameters (out)  : None
+* Return value      : none
+************************************************************************************/
 void Port_Init(void);
 
 	

@@ -2,8 +2,8 @@
 #include "PORT.h"
 
  const PORT_ConfigType User_Pins_cfg[NUMBER_OF_ACTIVATED_PINS] ={
-	/*elements template*/
-	 
+	
+	 /*elements template*/
 	 /*
 	{
 		port name , 
