@@ -8,7 +8,8 @@ Projects
 │
 ├─ Application
 │  ├─ LED_Control.c
-│  └─ LED_Control.h
+│  ├─ LED_Control.h
+│  └─ Simulation video.webm
 │
 ├─ HAL
 │  └─ LED.h
