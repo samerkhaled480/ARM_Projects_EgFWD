@@ -14,11 +14,18 @@ Projects
 │  │  │  └─ LED_Control.h
 │  │  └─ videos
 │  │     └─ Simulation video.webm
-│  └─ Project_2_EDF_Implementation_In_FreeRTOS
-│     ├─ 1-modifications_in_thesis
+│  │
+│  └─ Project_2_Design_EDF_scheduler
+│     │
+│     ├─ 1-Read a thesis and implement the required changes
 │     │  └─ tasks.c
-│     ├─ 2-final_modifications
-│     └─ 3-app_implmentation_and_testing
+│     │
+│     ├─ 2-Implement the missing changes from the thesis
+│     │
+│     ├─ 3-Implement 4 tasks using EDF scheduler
+│     │  └─ FreeRTOSConfig.h
+│     │
+│     └─ 4-Verifying the system implementation
 │
 ├─ HAL
 │  └─ LED.h
@@ -54,7 +61,6 @@ Projects
 │
 └─ Service
    └─ OS - FreeRTOS
-      ├─ FreeRTOSConfig.h
       ├─ License
       │  └─ license.txt
       └─ Source
